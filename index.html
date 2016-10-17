@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en" ng-app="ShoppingListCheckOff">
+	<head>
+		<meta charset="utf-8">
+		<title>Assignment 2</title>
+		<meta name="description" content="Coursera AngularJS SPA assignment 2">
+		<meta name="author" content="Iliev"><!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    	<style>
+			ol > li { margin-bottom: 5px; }
+    	</style>
+	</head>
+	<body>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-12">
+					<h2>Module 2 Coding Assignment</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4" ng-controller="ToBuyController as buyCtrl">
+					<h4>Available items</h4>
+					<div class="alert alert-danger" role="alert"
+					ng-if="buyCtrl.items.length == 0">
+						Everything is bought!
+					</div>
+					<ol>
+						<li ng-repeat="item in buyCtrl.items">
+							<span>Buy {{item.quantity}} {{item.name}}</span>
+							<button class="btn btn-success btn-xs"
+							ng-click="buyCtrl.buy($index)">
+								<i class="glyphicon glyphicon-shopping-cart"></i>
+								<span>Bought</span>
+							</button>
+						</li>
+					</ol>
+				</div>
+				<div class="col-md-4" ng-controller="AlreadyBoughtController as boughtCtrl">
+					<h4>Bought items</h4>
+					<div class="alert alert-danger" role="alert"
+					ng-if="boughtCtrl.items.length == 0">
+						Nothing bought yet!
+					</div>
+					<ol>
+						<li ng-repeat="item in boughtCtrl.items">Bought {{item.quantity}} {{item.name}}</li>
+					</ol>
+				</div>
+			</div>
+		</div>
+		<script src="./app.js"></script>
+	</body>
+</html>
